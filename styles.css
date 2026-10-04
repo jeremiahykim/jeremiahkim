@@ -1120,3 +1120,85 @@ h3 {
     flex-basis: 42px;
   }
 }
+
+/* =========================================================
+   iPad portrait header
+   - Extend the mobile nameplate/header treatment to portrait tablets
+   - Remove the full primary navigation to prevent crowding/overlap
+   - Preserve the tablet content layout above the 860px mobile breakpoint
+   ========================================================= */
+@media (min-width: 861px) and (max-width: 1024px) and (orientation: portrait) {
+  #home {
+    scroll-margin-top: 7rem;
+  }
+
+  .site-nav {
+    display: none;
+  }
+
+  .site-header {
+    gap: 0.75rem;
+    padding-inline: max(1.5rem, calc((100vw - var(--max-width)) / 2));
+  }
+
+  .header-identity {
+    width: 100%;
+    gap: 0;
+  }
+
+  /* Match the mobile hero-state header: name only, no avatar. */
+  .brand {
+    width: 0;
+    height: 0;
+    flex: 0 0 0;
+    border: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(0.82);
+    transition:
+      width 220ms ease,
+      height 220ms ease,
+      flex-basis 220ms ease,
+      opacity 160ms ease,
+      transform 220ms ease;
+  }
+
+  .header-name {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+    font-size: clamp(2rem, 5.4vw, 3.1rem);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    white-space: nowrap;
+    transition: font-size 220ms ease, letter-spacing 220ms ease, font-weight 220ms ease;
+  }
+
+  /* Avoid repeating the same large name directly below the tablet header. */
+  .hero-copy h1 {
+    display: none;
+  }
+
+  /* Once About is reached, restore the compact avatar + name header. */
+  .site-header.hero-passed .header-identity {
+    gap: 0.9rem;
+  }
+
+  .site-header.hero-passed .brand {
+    width: 46px;
+    height: 46px;
+    flex: 0 0 46px;
+    border: 1px solid var(--line);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .site-header.hero-passed .header-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
