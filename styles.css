@@ -197,6 +197,13 @@ h3 {
   color: var(--navy);
 }
 
+/* Desktop: Contact is already available in the header, so keep the hero CTA focused. */
+@media (min-width: 861px) {
+  .hero-actions .button-text {
+    display: none;
+  }
+}
+
 .portrait-frame {
   margin: 0;
   overflow: hidden;
@@ -817,6 +824,17 @@ h3 {
    ========================================================= */
 
 @media (max-width: 860px) {
+  /* Returning home from the sticky mobile header lands at the true top of the hero,
+     rather than tucking the portrait underneath the header. */
+  #home {
+    scroll-margin-top: 7rem;
+  }
+
+  /* Keep the secondary contact action available on mobile, where the nav is hidden. */
+  .hero-actions .button-text {
+    display: inline-flex;
+  }
+
   /* Hero state: the mobile header is name-only, with no circular avatar. */
   .header-identity {
     gap: 0;
