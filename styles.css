@@ -717,6 +717,12 @@ h3 {
     grid-template-columns: 1fr;
     gap: 0.7rem;
     padding-left: 0;
+    justify-items: start;
+  }
+
+  .contact-link-button {
+    justify-self: start;
+    text-align: left;
   }
 
   .contact-form-grid {
