@@ -1202,3 +1202,51 @@ h3 {
     letter-spacing: -0.02em;
   }
 }
+
+
+/* =========================================================
+   FINAL RESPONSIVE HEADER BREAKPOINTS
+   - 1440px+: full navigation and desktop spacing
+   - 1025–1180px: tighter desktop header/nav spacing
+   - 1024px and below: mobile-style header, no full nav
+   ========================================================= */
+@media (min-width: 1025px) and (max-width: 1180px) {
+  .site-header {
+    gap: 1rem;
+    padding-inline: 1.25rem;
+  }
+
+  .header-identity {
+    flex: 0 1 auto;
+    min-width: 0;
+  }
+
+  .header-name {
+    font-size: 0.98rem;
+  }
+
+  .site-nav {
+    gap: 0.72rem;
+    font-size: 0.80rem;
+    flex: 0 1 auto;
+    white-space: nowrap;
+  }
+
+  .nav-cta {
+    padding: 0.55rem 0.82rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-nav {
+    display: none;
+  }
+
+  .site-header {
+    gap: 0.75rem;
+  }
+
+  .header-identity {
+    width: 100%;
+  }
+}
