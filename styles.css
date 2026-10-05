@@ -14,6 +14,11 @@
   --radius: 18px;
   --section-space: clamp(4.5rem, 8vw, 7rem);
 
+  /* DESKTOP HERO TUNING — adjust these values without changing layout code */
+  --hero-copy-max: 650px;
+  --hero-portrait-max: 500px;
+  --hero-gap: clamp(2.5rem, 4.5vw, 5rem);
+
   /* EASY IMAGE SWAP: change only this filename */
   --beyond-background: url("assets/beyond-background.jpg");
 }
@@ -142,11 +147,17 @@ h3 {
 .hero {
   min-height: 72vh;
   display: grid;
-  grid-template-columns: minmax(0, 1.02fr) minmax(390px, 0.98fr);
+  grid-template-columns: minmax(0, var(--hero-copy-max)) minmax(320px, var(--hero-portrait-max));
+  justify-content: space-between;
   align-items: center;
-  gap: clamp(2.5rem, 5vw, 5rem);
+  gap: var(--hero-gap);
   padding-top: var(--section-space);
   padding-bottom: var(--section-space);
+}
+
+.hero-copy {
+  min-width: 0;
+  max-width: var(--hero-copy-max);
 }
 
 .hero-copy h1 {
@@ -156,6 +167,7 @@ h3 {
   font-weight: 500;
   letter-spacing: -0.045em;
   white-space: nowrap;
+  max-width: 100%;
 }
 
 .hero-kicker {
@@ -205,6 +217,8 @@ h3 {
 }
 
 .portrait-frame {
+  width: min(100%, var(--hero-portrait-max));
+  justify-self: end;
   margin: 0;
   overflow: hidden;
   border-radius: 28px;
@@ -645,10 +659,17 @@ h3 {
 }
 
 
+/* Wide desktop: keep the hero balanced and prevent text/portrait collision. */
+@media (min-width: 1181px) {
+  .hero-copy h1 {
+    font-size: clamp(3rem, 4.55vw, 4.65rem);
+  }
+}
+
 @media (max-width: 1120px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(340px, 0.82fr);
-    gap: 2.5rem;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 42%);
+    gap: clamp(1.75rem, 3vw, 2.5rem);
   }
 
   .hero-copy h1 {
@@ -663,8 +684,8 @@ h3 {
   }
 
   .hero {
-    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.72fr);
-    gap: 2rem;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 40%);
+    gap: 1.75rem;
   }
 
   .education-layout-b .compact-timeline,
